@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administrador</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 40px; }
+        .box { background: white; padding: 30px; border-radius: 8px; max-width: 600px; margin: auto; border-left: 5px solid #1B4D3E; }
+        h1 { color: #1A365D; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #1B4D3E; color: white; }
+        a { color: #8B0000; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Panel de Administrador</h1>
+        <p>Bienvenido, <b>{{ usuario }}</b>.</p>
+
+        <p>Usuarios registrados: <b>{{ usuarios|length }}</b></p>
+
+        <table>
+            <tr>
+                <th>Usuario</th>
+                <th>Rol</th>
+            </tr>
+            {% for nombre, datos in usuarios.items() %}
+                <tr>
+                    <td>{{ nombre }}</td>
+                    <td>{{ datos.rol }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <hr>
+        <p><a href="/logout">Cerrar Sesión</a></p>
+    </div>
+</body>
+</html>
